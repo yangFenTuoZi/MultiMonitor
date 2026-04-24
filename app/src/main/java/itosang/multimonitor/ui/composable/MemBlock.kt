@@ -22,13 +22,13 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MemBlock(
     // 单位均为 kB
-    memTotal: Long,
-    memAvailable: Long,
-    swapTotal: Long,
-    swapFree: Long
+    memTotalKb: Long,
+    memAvailableKb: Long,
+    swapTotalKb: Long,
+    swapFreeKb: Long
 ) {
-    val memProcess = 1.0f * memAvailable / memTotal
-    val swapProcess = 1.0f * (swapTotal - swapFree) / swapTotal
+    val memProcess = 1.0f * memAvailableKb / memTotalKb
+    val swapProcess = 1.0f * (swapTotalKb - swapFreeKb) / swapTotalKb
 
     val memProcessColor = if (memProcess >= 0.85) MaterialTheme.colorScheme.error
     else MaterialTheme.colorScheme.primary
@@ -91,9 +91,9 @@ fun MemBlock(
 @Composable
 private fun MemBlockPreview() {
     MemBlock(
-        memTotal = 16777216,
-        memAvailable = 8388608,
-        swapTotal = 33554432,
-        swapFree = 25165824
+        memTotalKb = 16777216,
+        memAvailableKb = 8388608,
+        swapTotalKb = 33554432,
+        swapFreeKb = 25165824
     )
 }
