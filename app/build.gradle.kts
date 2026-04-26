@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "itosang.multimonitor"
+    namespace = "yangfentuozi.multimonitor"
     compileSdk {
         version = release(37) {
             minorApiLevel = 0
@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "itosang.multimonitor"
+        applicationId = "yangfentuozi.multimonitor"
         minSdk = 30
         targetSdk = 37
         versionCode = 1

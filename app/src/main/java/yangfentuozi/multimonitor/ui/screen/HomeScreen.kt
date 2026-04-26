@@ -1,4 +1,4 @@
-package itosang.multimonitor.ui.screen
+package yangfentuozi.multimonitor.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,8 +11,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import itosang.multimonitor.R
-import itosang.multimonitor.ui.theme.scaffoldInsets
+import yangfentuozi.multimonitor.R
+import yangfentuozi.multimonitor.ui.theme.scaffoldInsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

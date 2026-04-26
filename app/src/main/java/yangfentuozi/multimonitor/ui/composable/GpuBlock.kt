@@ -1,4 +1,4 @@
-package itosang.multimonitor.ui.composable
+package yangfentuozi.multimonitor.ui.composable
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,20 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun MemBlock(
+fun GpuBlock(
     modifier: Modifier = Modifier,
-    memTotalKb: Long,
-    memAvailableKb: Long,
-    swapTotalKb: Long,
-    swapFreeKb: Long
+    frequencyMhz: Long,
+    utilizationRate: Float,
+    gpuModel: String
 ) {
-    val memProcess = 1.0f * memAvailableKb / memTotalKb
-    val swapProcess = 1.0f * (swapTotalKb - swapFreeKb) / swapTotalKb
-
-    val memProcessColor = if (memProcess >= 0.85) MaterialTheme.colorScheme.error
-    else MaterialTheme.colorScheme.primary
-
-    val swapProcessColor = if (swapProcess >= 0.85) MaterialTheme.colorScheme.error
+    val processColor = if (utilizationRate >= 0.85) MaterialTheme.colorScheme.error
     else MaterialTheme.colorScheme.primary
 
     Row(
@@ -42,8 +34,8 @@ fun MemBlock(
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(54.dp),
-            progress = { memProcess },
-            color = memProcessColor,
+            progress = { utilizationRate },
+            color = processColor,
             strokeWidth = 6.dp,
         )
         Column(
@@ -51,35 +43,24 @@ fun MemBlock(
                 .weight(1F)
                 .padding(start = 12.dp)
         ) {
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(6.dp),
-                progress = { memProcess },
-                color = memProcessColor,
-                gapSize = 7.dp
+            Text(
+                modifier = Modifier.padding(start = 2.dp),
+                text = "$frequencyMhz MHz",
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 modifier = Modifier.padding(start = 2.dp),
-                text = "物理内存      ${memProcess * 100}%",
-                fontSize = 10.5.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(Modifier.height(10.dp))
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(6.dp),
-                progress = { swapProcess },
-                color = swapProcessColor
+                text = "负载: GP${utilizationRate * 100}%",
+                fontSize = 11.sp
             )
             Spacer(Modifier.height(4.dp))
             Text(
                 modifier = Modifier.padding(start = 2.dp),
-                text = "交换分区      ${swapProcess * 100}%",
-                fontSize = 10.5.sp,
-                fontWeight = FontWeight.Bold
+                text = gpuModel,
+                fontSize = 9.sp,
+                maxLines = 3
             )
         }
     }
@@ -87,14 +68,13 @@ fun MemBlock(
 
 @Preview
 @Composable
-private fun MemBlockPreview() {
-    MemBlock(
+private fun GpuBlockPreview() {
+    GpuBlock(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
-        memTotalKb = 16777216,
-        memAvailableKb = 8388608,
-        swapTotalKb = 33554432,
-        swapFreeKb = 25165824
+        frequencyMhz = 114514,
+        utilizationRate = 0.8f,
+        gpuModel = "NVIDIA RTX 5090\nAMD RX580 8G\nARM Mali-G925"
     )
 }

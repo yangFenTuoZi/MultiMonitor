@@ -1,4 +1,4 @@
-package itosang.multimonitor.ui.theme
+package yangfentuozi.multimonitor.ui.theme
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets

@@ -1,4 +1,4 @@
-package itosang.multimonitor.ui.composable
+package yangfentuozi.multimonitor.ui.composable
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

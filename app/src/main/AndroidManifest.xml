@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiMonitor">
         <activity
-            android:name=".MainActivity"
+            android:name="yangfentuozi.multimonitor.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MultiMonitor">
             <intent-filter>

@@ -1,4 +1,4 @@
-package itosang.multimonitor.ui.theme
+package yangfentuozi.multimonitor.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
