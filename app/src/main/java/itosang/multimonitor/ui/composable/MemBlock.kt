@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun MemBlock(
-    // 单位均为 kB
+    modifier: Modifier = Modifier,
     memTotalKb: Long,
     memAvailableKb: Long,
     swapTotalKb: Long,
@@ -38,9 +38,7 @@ fun MemBlock(
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = modifier
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(54.dp),
@@ -51,7 +49,7 @@ fun MemBlock(
         Column(
             Modifier
                 .weight(1F)
-                .padding(15.dp)
+                .padding(start = 12.dp)
         ) {
             LinearProgressIndicator(
                 modifier = Modifier
@@ -91,6 +89,9 @@ fun MemBlock(
 @Composable
 private fun MemBlockPreview() {
     MemBlock(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         memTotalKb = 16777216,
         memAvailableKb = 8388608,
         swapTotalKb = 33554432,

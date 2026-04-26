@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun GpuBlock(
+    modifier: Modifier = Modifier,
     frequencyMhz: Long,
     utilizationRate: Float,
     gpuModel: String
@@ -29,9 +30,7 @@ fun GpuBlock(
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        modifier = modifier
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(54.dp),
@@ -42,7 +41,7 @@ fun GpuBlock(
         Column(
             Modifier
                 .weight(1F)
-                .padding(15.dp)
+                .padding(start = 12.dp)
         ) {
             Text(
                 modifier = Modifier.padding(start = 2.dp),
@@ -71,6 +70,9 @@ fun GpuBlock(
 @Composable
 private fun GpuBlockPreview() {
     GpuBlock(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         frequencyMhz = 114514,
         utilizationRate = 0.8f,
         gpuModel = "NVIDIA RTX 5090\nAMD RX580 8G\nARM Mali-G925"
